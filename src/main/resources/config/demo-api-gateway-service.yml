@@ -1,0 +1,58 @@
+server:
+  port: 8765
+
+management:
+  security:
+    enabled: false
+
+info:
+  component: DEMO API Gateway Server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+ribbon:
+  eurekaEnabled: true
+
+eureka:
+  client:
+    enabled: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+  instance:
+    appname: demo-api-gateway-service
+    preferIpAddress: true
+
+zuul:
+  debug:
+    request: true
+  prefix: /api
+  routes:
+    demo:
+      path: /**
+
+spring:
+  sleuth:
+   sampler:
+     percentage: 1.0
+   web:
+     skipPattern: (^cleanup.*)
+  zipkin:
+    sender:
+      type: web
+
+zipkinserver:
+  ribbon:
+    ListOfServers: demo-api-zipkin-service
+
+demo:
+ security:
+   jwt:
+    secret: otherpeopledontknowit

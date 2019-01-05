@@ -1,0 +1,50 @@
+server:
+  contextPath: /api
+  port: 8089
+
+management:
+  security:
+    enabled: false
+
+spring:
+  kafka:
+    bootstrapServers: localhost:9092
+    consumer:
+      groupId: kafka-demo-group
+      keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
+      valueDeserializer: demo.api.command.service.kafka.serialization.ItemEventDeserializer
+      autoOffsetReset: earliest
+      enableAutoCommit: false
+      isolationLevel: read_committed
+    listener:
+      ackMode: MANUAL
+
+  sleuth:
+    sampler:
+      percentage: 1.0
+    web:
+      skipPattern: (^cleanup.*)
+  zipkin:
+    sender:
+      type: web
+
+kafka:
+ demo:
+  topic: topic-kafka-demo-topic
+
+eureka:
+  client:
+    enabled: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+  instance:
+    appname: demo-api-command-service
+    preferIpAddress: true
+
+
+
+zipkinserver:
+  ribbon:
+    ListOfServers: demo-api-zipkin-service
