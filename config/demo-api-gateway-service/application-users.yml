@@ -1,0 +1,10 @@
+application:
+  users:
+    - username: user
+      password: 12c53d96-d609-4841-ba91-52f065a93e66
+      roles: USER
+    - username: admin
+#      password: 8c1b2d8f-1976-453e-8219-faf6e214986f
+      password: admin
+      roles: ADMIN
+
