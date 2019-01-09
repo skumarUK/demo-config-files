@@ -1,12 +1,12 @@
 server:
-  port: 8765
+  port: 8090
 
 management:
   security:
     enabled: false
 
 info:
-  component: DEMO API Gateway Server
+  component: DEMO API Central Auth Server
 
 endpoints:
   restart:
@@ -29,14 +29,6 @@ eureka:
     leaseExpirationDurationInSeconds: 20 # time that Eureka server waits since it received last heartbeat before it can evict this instance
 
 
-zuul:
-  debug:
-    request: true
-  prefix: /api
-  routes:
-    demo:
-      path: /**
-
 spring:
   sleuth:
    sampler:
@@ -51,4 +43,7 @@ zipkinserver:
   ribbon:
     ListOfServers: demo-api-zipkin-service
 
-
+demo:
+ security:
+   jwt:
+    secret: otherpeopledontknowit
