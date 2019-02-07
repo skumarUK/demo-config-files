@@ -1,20 +1,30 @@
 server:
-  port: 8091
+  port: 8765
 
 management:
   security:
     enabled: false
 
 info:
-  component: DEMO API Central Auth Server
+  component: DEMO API Gateway Server
 
 endpoints:
   restart:
     enabled: true
   shutdown:
     enabled: true
+  refresh:
+    enabled: true
   health:
     sensitive: false
+
+ribbon:
+  ConnectTimeout:  10000
+  ReadTimeout:  10000
+  MaxAutoRetries: 3
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: false
+
 
 eureka:
   client:
@@ -24,6 +34,24 @@ eureka:
     leaseRenewalIntervalInSeconds: 10 # intervalSeconds between subsequent heartbeats sent to Eureka server
     leaseExpirationDurationInSeconds: 20 # time that Eureka server waits since it received last heartbeat before it can evict this instance
 
+zuul:
+  host:
+    connectTimeoutMillis: 600000
+    socketTimeoutMillis: 600000
+  include-debug-header: true
+  sensitiveHeaders: Cookie,Set-Cookie
+  debug:
+    request: true
+  prefix: /api
+  ignoredServices: '*'
+  retryable: true
+  routes:
+    auth-center:
+      path: /login/**
+      serviceId: demo-api-central-auth-service
+      stripPrefix: false
+    demo:
+      path: /**
 
 spring:
   sleuth:
@@ -35,10 +63,11 @@ spring:
     sender:
       type: web
 
+
 demo:
- security:
-   jwt:
-    secret: otherpeopledontknowit
+  security:
+    jwt:
+      secret: otherpeopledontknowit
 
 logging:
   level:
@@ -46,17 +75,9 @@ logging:
       springframework:
         security: DEBUG
 
-application:
-  users:
-    - username: user
-      password: 12c53d96-d609-4841-ba91-52f065a93e66
-      roles: USER
-    - username: admin
-      password: 8c1b2d8f-1976-453e-8219-faf6e214986f
-      roles: ADMIN
-    - username: skumar
-      password: skumar
-      roles: USER
-    - username: admin
-      password: admin
-      roles: USER, ADMIN
+hystrix:
+ command:
+  default:
+    execution:
+      timeout:
+        enabled: false

@@ -1,10 +1,12 @@
 server:
-  contextPath: /api
+  servlet:
+    context-path: /api
   port: 8089
+
 
 spring:
   kafka:
-    bootstrapServers: localhost:9092
+    bootstrapServers: kafka:9092
     consumer:
       groupId: kafka-demo-group
       keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -28,22 +30,6 @@ kafka:
  demo:
   topic: topic-kafka-demo-topic
 
-eureka:
-  client:
-    enabled: true
-    registryFetchIntervalSeconds: 10 # how often to fetch the registry from Eureka server
-    instanceInfoReplicationIntervalSeconds: 10 # how often to replicate instance changes to be replicated to Eureka server
-  instance:
-    leaseRenewalIntervalInSeconds: 10 # intervalSeconds between subsequent heartbeats sent to Eureka server
-    leaseExpirationDurationInSeconds: 20 # time that Eureka server waits since it received last heartbeat before it can evict this instance
-
-
-
-
-zipkinserver:
-  ribbon:
-    ListOfServers: demo-api-zipkin-service
-
 management:
   securitymanagement:
     security:
@@ -52,3 +38,7 @@ management:
     web:
       exposure:
         include: ["health", "info", "refresh"]
+
+item:
+  description:
+    suffix: TestingPropertyUpdate
