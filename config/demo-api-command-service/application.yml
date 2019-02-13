@@ -40,5 +40,4 @@ management:
         include: ["health", "info", "refresh"]
 
 item:
-  description:
-    suffix: TestingPropertyUpdate
+  descriptionSuffix: TestingPropertyUpdate
