@@ -40,4 +40,4 @@ management:
         include: ["health", "info", "refresh"]
 
 item:
-  descriptionSuffix: TestingPropertyUpdate12
+  descriptionSuffix: TestingPropertyUpdate13
