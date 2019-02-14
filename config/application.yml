@@ -6,3 +6,12 @@ spring:
       kafka:
         binder:
           brokers: "kafka:9092"
+
+management:
+  securitymanagement:
+    security:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: *		  

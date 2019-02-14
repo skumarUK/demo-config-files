@@ -21,13 +21,6 @@ kafka:
  demo:
    topic: topic-kafka-demo-topic
 
-management:
-  security:
-    enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: ["health", "info", "refresh"]
 
 #feign:
 #  hystrix:
