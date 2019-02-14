@@ -32,3 +32,12 @@ kafka:
 
 item:
   descriptionSuffix: TestingPropertyUpdate14
+  
+management:
+  securitymanagement:
+    security:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

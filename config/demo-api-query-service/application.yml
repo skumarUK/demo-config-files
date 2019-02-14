@@ -21,7 +21,15 @@ kafka:
  demo:
    topic: topic-kafka-demo-topic
 
-
+management:
+  securitymanagement:
+    security:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"	
+   
 #feign:
 #  hystrix:
 #    enabled: true
