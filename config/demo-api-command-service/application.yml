@@ -30,14 +30,5 @@ kafka:
  demo:
   topic: topic-kafka-demo-topic
 
-management:
-  securitymanagement:
-    security:
-      enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: *
-
 item:
   descriptionSuffix: TestingPropertyUpdate14
