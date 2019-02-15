@@ -31,7 +31,7 @@ kafka:
   topic: topic-kafka-demo-topic
 
 item:
-  descriptionSuffix: TestingPropertyUpdate14
+  descriptionSuffix: TestingPropertyUpdate15
   
 management:
   securitymanagement:
