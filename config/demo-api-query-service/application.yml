@@ -28,7 +28,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"	
+        include: "*"
    
 #feign:
 #  hystrix:
