@@ -31,7 +31,7 @@ kafka:
   topic: topic-kafka-demo-topic
 
 item:
-  descriptionSuffix: Spring Cloud Config Demo
+  descriptionSuffix: Spring Cloud Config Demo1
   
 management:
   securitymanagement:
