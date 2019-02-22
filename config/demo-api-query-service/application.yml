@@ -9,7 +9,7 @@ spring:
     consumer:
       groupId: kafka-demo-group-query
       keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
-      valueDeserializer: demo.api.command.service.kafka.serialization.ItemEventDeserializer
+      valueDeserializer: demo.api.command.service.kafka.serialization.GenericDeserializer
       autoOffsetReset: latest
       enableAutoCommit: false
       isolationLevel: read_committed
